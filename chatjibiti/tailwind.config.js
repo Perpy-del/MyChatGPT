@@ -15,6 +15,7 @@ module.exports = {
       // "bg-color-right": "#202123",
       // "bg-color-left": "#282c34",
       white: "#FFFFFF",
+      yellow: "#FFEB2A",
     },
     extend: {},
   },
