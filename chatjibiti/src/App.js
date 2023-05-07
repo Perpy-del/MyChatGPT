@@ -1,13 +1,20 @@
 import "./normalize.css";
 import { BiUser } from "react-icons/bi";
 import { AiOutlineEllipsis } from "react-icons/ai";
+import { BsSun } from "react-icons/bs";
+import { BsSend } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
+import { BsLightningCharge } from "react-icons/bs";
+import { BsExclamationTriangle } from "react-icons/bs";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlinePlus } from "react-icons/ai";
 
 function App() {
   return (
     // This is the main UI for the page
-    <div className="bg-[#282c34] absolute top-0 right-0 left-0 bottom-0 text-white flex text-center">
+    <div className="text-white flex items-center text-center">
       {/* This is for the left side menu  */}
-      <aside className="w-[260px] absolute top-0 bottom-0 left-0 bg-[#202123] p-[10px]">
+      <aside className="md:flex md:flex-col md:w-[20%] md:absolute md:top-0 md:bottom-0 md:left-0 md:bg-[#202123] md:p-[10px] hidden">
         {/* For the New Chat Button/Box */}
         <div className="p-[8px] border border-solid border-[#fff3] rounded-[5px] text-start text-[0.8rem] flex items-center hover:bg-[rgba(255,255,255,0.1)] transition-all ease-linear duration-200 cursor-pointer">
           <span className="pl-[6px] pr-[12px] text-[1.5rem]">+</span>
@@ -38,7 +45,86 @@ function App() {
       </aside>
 
       {/* This is for the right side menu where the response is displayed */}
-      <section className="flex-1 bg-[#343541]"></section>
+      <section className="flex flex-col bg-[#343541] absolute top-0 bottom-0 right-0 md:w-[80%] w-[100%] text-[#D9D9E3]">
+        {/* EXAMPLES, CAPABILITIES AND LIMITATIONS */}
+        <div className="flex justify-between items-center px-4 py-[10px] border-[#838181] border-b-[0.2px] md:hidden">
+          <RxHamburgerMenu className="text-[1.4rem] cursor-pointer" />
+          <h3 className="text-[0.9rem]">New Chat</h3>
+          <AiOutlinePlus className="text-[1.4rem] cursor-pointer" />
+        </div>
+        <h1 className="hidden md:block md:font-bold pb-10 text-[2.175rem] text-white">
+          ChatGPT
+        </h1>
+        <div className="flex gap-4 items-start w-[75%] mx-auto pb-[5rem]">
+          {/* EXAMPLES */}
+          <div className="flex flex-col items-center gap-4 w-[30%]">
+            <BsSun className="text-[1.4rem]" />
+            <h3 className="font-semibold text-[1.1rem]">Examples</h3>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5">
+              "Explain quantum computing in simple terms"
+              <BsArrowRightShort className="text-[1.2rem] inline-block" />
+            </h5>
+            <h5 className="text-[0.85rem] bg bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5">
+              "Got any creative ideas for a 10 year old's birthday?"{" "}
+              <BsArrowRightShort className="text-[1.2rem] inline-block" />
+            </h5>
+            <h5 className="text-[0.85rem] bg bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5">
+              "How do I make an HTTP request in Javascript?"{" "}
+              <BsArrowRightShort className="text-[1.2rem] inline-block" />
+            </h5>
+          </div>
+
+          {/* CAPABILITIES */}
+          <div className="flex flex-col items-center gap-4 w-[30%]">
+            <BsLightningCharge className="text-[1.4rem]" />
+            <h3 className="font-semibold text-[1.1rem]">Capabilities</h3>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+              "Remembers what user said earlier in the conversation"
+            </h5>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+              "Allows user to provide follow-up corrections"
+            </h5>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+              "Trained to decline inappropriate requests"
+            </h5>
+          </div>
+
+          {/* LIMITATIONS SECTION */}
+          <div className="flex flex-col items-center gap-4 w-[30%]">
+            <BsExclamationTriangle className="text-[1.4rem]" />
+            <h3 className="font-semibold text-[1.1rem]">Limitations</h3>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+              "May occassionally generate incorrect information"
+            </h5>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+              "May occassionally produce harmful instructions or biased content"
+            </h5>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+              "Limited knowedge of world and events after 2021"
+            </h5>
+          </div>
+        </div>
+        <div className="w-[75%] mx-auto">
+          <div className="flex justify-between px-5 py-4 mb-[0.5rem] w-[95%] bg-[#40414f] text-sm">
+            <input
+              type="text"
+              placeholder="Send a message."
+              className="outline-none bg-[#40414f]"
+            />
+            <BsSend className="text-[#7f8196]" />
+          </div>
+          <h6 className="text-[0.7rem] pt-2">
+            Free Research Preview. ChatGPT may produce inaccurate information
+            about people, places, or facts. <span> </span>
+            <a
+              href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+              className="underline"
+            >
+              ChatGPT May 3 Version
+            </a>
+          </h6>
+        </div>
+      </section>
     </div>
   );
 }
