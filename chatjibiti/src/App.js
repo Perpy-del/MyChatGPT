@@ -1,11 +1,12 @@
 import "./normalize.css";
-import { BiUser } from "react-icons/bi";
+import { BiUser, BiTrash } from "react-icons/bi";
 import {
   BsSun,
   BsSend,
   BsArrowRightShort,
   BsLightningCharge,
   BsExclamationTriangle,
+  BsBoxArrowUpRight,
 } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
@@ -14,11 +15,13 @@ import {
   AiOutlineClose,
   AiOutlineEllipsis,
 } from "react-icons/ai";
+import { FiLogOut, FiSettings } from "react-icons/fi";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { useState } from "react";
 
 function App() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  // const [showScroll, setShowScroll] = useState(true);
   const handleNav = () => {
     setShowNav(!showNav);
   };
@@ -101,7 +104,11 @@ function App() {
         >
           <AiOutlineClose className="text-[1.2rem]" />
         </button>
-        {showNav ? <RxHamburgerMenu /> : <div className="overlay"></div>}
+        {showNav ? (
+          <RxHamburgerMenu />
+        ) : (
+          <div className="overlay" onClick={handleNav}></div>
+        )}
       </nav>
 
       {/* This is for the right side menu where the response is displayed */}
@@ -210,8 +217,7 @@ function App() {
         </div>
       </section>
 
-      <button className="scrolling text-white fixed border-[0.1px] border-[#7f8196] rounded-full p-1 right-5 bottom-[10rem] bg-[#50515c]">
-        {" "}
+      <button className="text-white fixed border-[0.1px] border-[#7f8196] rounded-full p-1 right-5 bottom-[10rem] bg-[#50515c]">
         <Link
           activeClass="active"
           to="footer"
