@@ -54,66 +54,78 @@ function App() {
         </div>
 
         {/* CHATGPT TEXT HIDDEN FOR MOBILE/TAB DEVICES */}
-        <h1 className="hidden md:block md:font-bold pb-10 text-[2.175rem] text-white pt-[7rem]">
+        <h1 className="md:block font-bold pb-10 text-[2.175rem] text-white pt-0 md:pt-[7rem]">
           ChatGPT
         </h1>
 
         {/* EXAMPLES, CAPABILITIES AND LIMITATIONS */}
-        <div className="flex gap-4 items-start w-[75%] mx-auto pb-[10rem] bg-[#343541]">
+        <div className="flex md:flex-row flex-col items-center w-full md:gap-4 md:items-start md:w-[75%] md:mx-auto md:pb-[10rem] bg-[#343541]">
           {/* EXAMPLES */}
-          <div className="flex flex-col items-center gap-4 w-[30%]">
-            <BsSun className="text-[1.4rem]" />
-            <h3 className="font-semibold text-[1.1rem]">Examples</h3>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5">
+          <div className="flex flex-col items-center px-5 md:px-0 gap-4 md:w-[30%] w-[80%]">
+            <div className="flex gap-4 md:flex-col flex-row">
+              <div className="mx-auto">
+                <BsSun className="text-[1.4rem]" />
+              </div>
+              <h3 className="font-semibold text-[1.1rem]">Examples</h3>
+            </div>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "Explain quantum computing in simple terms"
               <BsArrowRightShort className="text-[1.2rem] inline-block" />
             </h5>
-            <h5 className="text-[0.85rem] bg bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5">
+            <h5 className="text-[0.85rem] bg bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "Got any creative ideas for a 10 year old's birthday?"{" "}
               <BsArrowRightShort className="text-[1.2rem] inline-block" />
             </h5>
-            <h5 className="text-[0.85rem] bg bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5">
+            <h5 className="text-[0.85rem] bg bg-[#ffffff0d] hover:bg-[#202123] cursor-pointer px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "How do I make an HTTP request in Javascript?"{" "}
               <BsArrowRightShort className="text-[1.2rem] inline-block" />
             </h5>
           </div>
 
           {/* CAPABILITIES */}
-          <div className="flex flex-col items-center gap-4 w-[30%]">
-            <BsLightningCharge className="text-[1.4rem]" />
-            <h3 className="font-semibold text-[1.1rem]">Capabilities</h3>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+          <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[80%]">
+            <div className="flex gap-4 md:flex-col flex-row">
+              <div className="mx-auto">
+                <BsLightningCharge className="text-[1.4rem]" />
+              </div>
+              <h3 className="font-semibold text-[1.1rem]">Capabilities</h3>
+            </div>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "Remembers what user said earlier in the conversation"
             </h5>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "Allows user to provide follow-up corrections"
             </h5>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "Trained to decline inappropriate requests"
             </h5>
           </div>
 
           {/* LIMITATIONS SECTION */}
-          <div className="flex flex-col items-center gap-4 w-[30%]">
-            <BsExclamationTriangle className="text-[1.4rem]" />
-            <h3 className="font-semibold text-[1.1rem]">Limitations</h3>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+          <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[80%] mb-[12rem] md:mb-0">
+            <div className="flex gap-4 md:flex-col flex-row">
+              <div className="mx-auto">
+                <BsExclamationTriangle className="text-[1.4rem]" />
+              </div>
+              <h3 className="font-semibold text-[1.1rem]">Limitations</h3>
+            </div>
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "May occassionally generate incorrect information"
             </h5>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "May occassionally produce harmful instructions or biased content"
             </h5>
-            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5">
+            <h5 className="text-[0.85rem] bg-[#ffffff0d] px-4 py-3 rounded-[6px] font-medium leading-5 w-full">
               "Limited knowedge of world and events after 2021"
             </h5>
           </div>
         </div>
-        <div className="flex flex-col items-center w-[75%] ml-5 fixed bottom-0">
-          <div className="flex justify-between px-5 py-4 mb-[0.5rem] w-[80%] bg-[#40414f] text-sm">
+        <div className="flex flex-col items-center w-[97%] md:w-[75%] md:ml-5 fixed bottom-0 left-2 md:left-[15rem] bg-[#343541] border-t border-[#7f8196] pt-2 md:border-none md:pt-0">
+          <div className="flex justify-between px-5 py-4 mb-[0.5rem] md:w-[80%] w-full bg-[#40414f] text-sm">
             <input
               type="text"
               placeholder="Send a message."
-              className="outline-none bg-[#40414f]"
+              className="outline-none bg-[#40414f] w-full"
             />
             <BsSend className="text-[#7f8196]" />
           </div>
