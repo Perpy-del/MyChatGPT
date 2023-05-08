@@ -1,20 +1,35 @@
 import "./normalize.css";
 import { BiUser } from "react-icons/bi";
-import { AiOutlineEllipsis } from "react-icons/ai";
-import { BsSun } from "react-icons/bs";
-import { BsSend } from "react-icons/bs";
-import { BsArrowRightShort } from "react-icons/bs";
-import { BsLightningCharge } from "react-icons/bs";
-import { BsExclamationTriangle } from "react-icons/bs";
+import {
+  BsSun,
+  BsSend,
+  BsArrowRightShort,
+  BsLightningCharge,
+  BsExclamationTriangle,
+} from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { AiOutlinePlus } from "react-icons/ai";
+import {
+  AiOutlinePlus,
+  AiOutlineArrowDown,
+  AiOutlineClose,
+  AiOutlineEllipsis,
+} from "react-icons/ai";
+import { Link, animateScroll as scroll } from "react-scroll";
+import { useState } from "react";
 
 function App() {
+  const [showNav, setShowNav] = useState(false);
+  const handleNav = () => {
+    setShowNav(!showNav);
+  };
+
+  // To display/close the Nav Bar for mobile/tablet devices
+
   return (
     // This is the main UI for the page
-    <div className="text-white flex items-center text-center">
-      {/* This is for the left side menu  */}
-      <aside className="md:flex md:flex-col md:w-[20%]  md:top-0 md:bottom-0 md:left-0 md:bg-[#202123] md:p-[10px] hidden md:fixed">
+    <div className="text-white flex items-center text-center overscroll-y-contain">
+      {/* This is for the left side menu/NavBar for Desktop  */}
+      <nav className="md:flex md:flex-col md:w-[20%] md:top-0 md:bottom-0 md:left-0 bg-[#202123] p-[10px] fixed">
         {/* For the New Chat Button/Box */}
         <div className="p-[8px] border border-solid border-[#fff3] rounded-[5px] text-start text-[0.8rem] flex items-center hover:bg-[rgba(255,255,255,0.1)] transition-all ease-linear duration-200 cursor-pointer">
           <span className="pl-[6px] pr-[12px] text-[1.5rem]">+</span>
@@ -42,18 +57,68 @@ function App() {
             </span>
           </div>
         </div>
-      </aside>
+      </nav>
+
+      <nav className={`flex items-start md:hidden `}>
+        <div
+          className={`flex flex-col w-[50%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
+            showNav ? "translate-x-[-100%]" : "translate-x-[0%]"
+          }`}
+        >
+          {/* For the New Chat Button/Box */}
+          <div className="p-[8px] border border-solid border-[#fff3] rounded-[5px] text-start text-[0.8rem] flex items-center hover:bg-[rgba(255,255,255,0.1)] transition-all ease-linear duration-200 cursor-pointer">
+            <span className="pl-[6px] pr-[12px] text-[1.5rem]">+</span>
+            New chat
+          </div>
+
+          {/* This is for the bottom part of the aside section */}
+          <div className="absolute bottom-0 text-[0.85rem] border-t border-[#fff3] py-1 cursor-pointer font-medium w-[95%]">
+            <div className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2">
+              <span className="pr-4">
+                <BiUser />
+              </span>
+              Upgrade to Plus
+              <span className="ml-[6rem] bg-yellow px-2 py-1 rounded-lg text-[#282c34] font-medium text-xs">
+                NEW
+              </span>
+            </div>
+            <div className="md:w-[240px] w-full flex items-center gap-2 hover:bg-[#343541] transition-all ease-linear duration-200 py-4 mb-1 rounded-[7px] px-2">
+              <span className="text-[8px] bg-[#3b82f680] p-1">PE</span>
+              <h4 className="md:whitespace-nowrap md:text-ellipsis md:overflow-hidden ml-2">
+                perpetualmeninwa@gmail.com
+              </h4>
+              <span className="text-lg pl-3 md:ml-2">
+                <AiOutlineEllipsis />
+              </span>
+            </div>
+          </div>
+        </div>
+        <button
+          className={`close md:hidden ${
+            showNav ? "hidden" : "fixed top-3 border-2"
+          } p-2 left-[20rem] transition duration-300 z-10 text-xl}`}
+          onClick={handleNav}
+        >
+          <AiOutlineClose className="text-[1.2rem]" />
+        </button>
+        {showNav ? <RxHamburgerMenu /> : <div className="overlay"></div>}
+      </nav>
 
       {/* This is for the right side menu where the response is displayed */}
-      <section className="flex flex-col bg-[#343541] absolute top-0 bottom-0 right-0 md:w-[80%] w-[100%] text-[#D9D9E3]">
+      <section
+        className={`flex flex-col bg-[#343541] ${
+          showNav ? "absolute" : "fixed"
+        } top-0 bottom-0 right-0 md:w-[80%] w-[100%] text-[#D9D9E3]`}
+      >
         {/* TOP HAMBURGER MENU FOR MOBILE/TABLETS */}
         <div className="flex justify-between items-center px-4 py-[10px] border-[#838181] border-b-[0.2px] md:hidden">
-          <RxHamburgerMenu className="text-[1.4rem] cursor-pointer" />
+          <button className="hover:font-extrabold" onClick={handleNav}>
+            <RxHamburgerMenu className="text-[1.4rem] hover:text-[1.5rem]" />
+          </button>
           <h3 className="text-[0.9rem]">New Chat</h3>
           <AiOutlinePlus className="text-[1.4rem] cursor-pointer" />
         </div>
 
-        {/* CHATGPT TEXT HIDDEN FOR MOBILE/TAB DEVICES */}
         <h1 className="md:block font-bold pb-10 text-[2.175rem] text-white pt-0 md:pt-[7rem]">
           ChatGPT
         </h1>
@@ -61,7 +126,7 @@ function App() {
         {/* EXAMPLES, CAPABILITIES AND LIMITATIONS */}
         <div className="flex md:flex-row flex-col items-center w-full md:gap-4 md:items-start md:w-[75%] md:mx-auto md:pb-[10rem] bg-[#343541]">
           {/* EXAMPLES */}
-          <div className="flex flex-col items-center px-5 md:px-0 gap-4 md:w-[30%] w-[80%]">
+          <div className="flex flex-col items-center px-5 md:px-0 gap-4 md:w-[30%] w-[98%]">
             <div className="flex gap-4 md:flex-col flex-row">
               <div className="mx-auto">
                 <BsSun className="text-[1.4rem]" />
@@ -83,7 +148,7 @@ function App() {
           </div>
 
           {/* CAPABILITIES */}
-          <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[80%]">
+          <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[98%]">
             <div className="flex gap-4 md:flex-col flex-row">
               <div className="mx-auto">
                 <BsLightningCharge className="text-[1.4rem]" />
@@ -102,7 +167,7 @@ function App() {
           </div>
 
           {/* LIMITATIONS SECTION */}
-          <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[80%] mb-[12rem] md:mb-0">
+          <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[98%] mb-[12rem] md:mb-0">
             <div className="flex gap-4 md:flex-col flex-row">
               <div className="mx-auto">
                 <BsExclamationTriangle className="text-[1.4rem]" />
@@ -120,12 +185,15 @@ function App() {
             </h5>
           </div>
         </div>
-        <div className="flex flex-col items-center w-[97%] md:w-[75%] md:ml-5 fixed bottom-0 left-2 md:left-[15rem] bg-[#343541] border-t border-[#7f8196] pt-2 md:border-none md:pt-0">
+        <div
+          className="flex flex-col items-center w-[97%] md:w-[75%] md:ml-5 fixed bottom-0 left-2 md:left-[15rem] bg-[#343541] border-t border-[#7f8196] pt-2 md:border-none md:pt-0"
+          title="footer"
+        >
           <div className="flex justify-between px-5 py-4 mb-[0.5rem] md:w-[80%] w-full bg-[#40414f] text-sm">
             <input
               type="text"
               placeholder="Send a message."
-              className="outline-none bg-[#40414f] w-full"
+              className="outline-none bg-[rgb(64,65,79)] w-full"
             />
             <BsSend className="text-[#7f8196]" />
           </div>
@@ -141,6 +209,21 @@ function App() {
           </h6>
         </div>
       </section>
+
+      <button className="scrolling text-white fixed border-[0.1px] border-[#7f8196] rounded-full p-1 right-5 bottom-[10rem] bg-[#50515c]">
+        {" "}
+        <Link
+          activeClass="active"
+          to="footer"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={300}
+          onClick={scroll.scrollToBottom}
+        >
+          <AiOutlineArrowDown />
+        </Link>
+      </button>
     </div>
   );
 }
