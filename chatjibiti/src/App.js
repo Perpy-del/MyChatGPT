@@ -62,9 +62,10 @@ function App() {
         </div>
       </nav>
 
+      {/* This is the left side menu for Mobile */}
       <nav className={`flex items-start md:hidden `}>
         <div
-          className={`flex flex-col w-[50%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
+          className={`flex flex-col w-[80%] sm:w-[50%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
             showNav ? "translate-x-[-100%]" : "translate-x-[0%]"
           }`}
         >
