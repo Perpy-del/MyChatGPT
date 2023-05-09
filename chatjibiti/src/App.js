@@ -65,7 +65,7 @@ function App() {
       {/* This is the left side menu for Mobile */}
       <nav className={`flex items-start md:hidden `}>
         <div
-          className={`flex flex-col w-[80%] sm:w-[50%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
+          className={`flex flex-col w-[80%] sm:w-[60%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
             showNav ? "translate-x-[-100%]" : "translate-x-[0%]"
           }`}
         >
@@ -77,18 +77,18 @@ function App() {
 
           {/* This is for the bottom part of the aside section */}
           <div className="absolute bottom-0 text-[0.85rem] border-t border-[#fff3] py-1 cursor-pointer font-medium w-[95%]">
-            <div className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2">
+            <div className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2 whitespace-nowrap">
               <span className="pr-4">
                 <BiUser />
               </span>
               Upgrade to Plus
-              <span className="ml-[6rem] bg-yellow px-2 py-1 rounded-lg text-[#282c34] font-medium text-xs">
+              <span className="ml-[2rem] bg-yellow px-2 py-1 rounded-lg text-[#282c34] font-medium text-xs">
                 NEW
               </span>
             </div>
             <div className="md:w-[240px] w-full flex items-center gap-2 hover:bg-[#343541] transition-all ease-linear duration-200 py-4 mb-1 rounded-[7px] px-2">
               <span className="text-[8px] bg-[#3b82f680] p-1">PE</span>
-              <h4 className="md:whitespace-nowrap md:text-ellipsis md:overflow-hidden ml-2">
+              <h4 className="whitespace-nowrap text-ellipsis overflow-hidden ml-2">
                 perpetualmeninwa@gmail.com
               </h4>
               <span className="text-lg pl-3 md:ml-2">
@@ -99,8 +99,8 @@ function App() {
         </div>
         <button
           className={`close md:hidden ${
-            showNav ? "hidden" : "fixed top-3 border-2"
-          } p-2 left-[20rem] transition duration-300 z-10 text-xl}`}
+            showNav ? "hidden" : "fixed top-2 border-2"
+          } p-2 left-[19rem] transition duration-300 z-10 text-xl}`}
           onClick={handleNav}
         >
           <AiOutlineClose className="text-[1.2rem]" />
