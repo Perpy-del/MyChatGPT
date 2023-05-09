@@ -100,7 +100,7 @@ function App() {
         <button
           className={`close md:hidden ${
             showNav ? "hidden" : "fixed top-2 border-2"
-          } p-2 left-[23rem] sm:left-[19rem] transition duration-300 z-10 text-xl}`}
+          } p-2 left-[20rem] sm:left-[19rem] transition duration-300 z-10 text-xl}`}
           onClick={handleNav}
         >
           <AiOutlineClose className="text-[1.2rem]" />
