@@ -18,19 +18,23 @@ import {
 import { FiLogOut, FiSettings } from "react-icons/fi";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { useState } from "react";
+import ModalUpgrade from "./Components/ModalUpgrade";
 
 function App() {
   const [showNav, setShowNav] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   // const [showScroll, setShowScroll] = useState(true);
   const handleNav = () => {
     setShowNav(!showNav);
   };
 
-  // To display/close the Nav Bar for mobile/tablet devices
+  const startModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     // This is the main UI for the page
-    <div className="text-white flex items-center text-center overscroll-y-contain">
+    <div className="text-white flex items-center text-center scroll-smooth">
       {/* This is for the left side menu/NavBar for Desktop  */}
       <nav className="md:flex md:flex-col md:w-[20%] md:top-0 md:bottom-0 md:left-0 bg-[#202123] p-[10px] fixed">
         {/* For the New Chat Button/Box */}
@@ -41,7 +45,10 @@ function App() {
 
         {/* This is for the bottom part of the aside section */}
         <div className="absolute bottom-0 text-[0.85rem] border-t border-[#fff3] py-1 cursor-pointer font-medium">
-          <div className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2">
+          <div
+            className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2"
+            onClick={startModal}
+          >
             <span className="pr-4">
               <BiUser />
             </span>
@@ -100,7 +107,7 @@ function App() {
         <button
           className={`close md:hidden ${
             showNav ? "hidden" : "fixed top-2 border-2"
-          } p-2 left-[20rem] sm:left-[19rem] transition duration-300 z-10 text-xl}`}
+          } p-2 left-[22rem] sm:left-[19rem] transition duration-300 z-10 text-xl}`}
           onClick={handleNav}
         >
           <AiOutlineClose className="text-[1.2rem]" />
@@ -194,7 +201,7 @@ function App() {
           </div>
         </div>
         <div
-          className="flex flex-col items-center w-[97%] md:w-[75%] md:ml-5 fixed bottom-0 left-2 md:left-[15rem] bg-[#343541] border-t border-[#7f8196] pt-2 md:border-none md:pt-0"
+          className="flex flex-col items-center w-[97%] md:w-[75%] md:ml-[-4rem] lg:ml-8 fixed bottom-0 left-2 md:left-[15rem] bg-[#343541] border-t border-[#7f8196] pt-2 md:border-none md:pt-0"
           title="footer"
         >
           <div className="flex justify-between px-5 py-4 mb-[0.5rem] md:w-[80%] w-full bg-[#40414f] text-sm">
@@ -231,6 +238,7 @@ function App() {
           <AiOutlineArrowDown />
         </Link>
       </button>
+      <ModalUpgrade open={showModal} onClose={startModal} />
     </div>
   );
 }

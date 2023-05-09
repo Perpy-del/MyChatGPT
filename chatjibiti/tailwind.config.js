@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     screens: {
       sm: "480px",
@@ -17,6 +17,7 @@ module.exports = {
       // "bg-color-left": "#282c34",
       white: "#FFFFFF",
       yellow: "#FFEB2A",
+      black: "#201F1F",
     },
     extend: {},
   },
