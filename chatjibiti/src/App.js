@@ -35,7 +35,7 @@ function App() {
   return (
     // This is the main UI for the page
     <div className="text-white flex items-center text-center scroll-smooth">
-      {/* This is for the left side menu/NavBar for Desktop  */}
+      {/* ================================== This is for the left side menu/NavBar for DESKTOP ========================================= */}
       <nav className="md:flex md:flex-col md:w-[20%] md:top-0 md:bottom-0 md:left-0 bg-[#202123] p-[10px] fixed">
         {/* For the New Chat Button/Box */}
         <div className="p-[8px] border border-solid border-[#fff3] rounded-[5px] text-start text-[0.8rem] flex items-center hover:bg-[rgba(255,255,255,0.1)] transition-all ease-linear duration-200 cursor-pointer">
@@ -69,7 +69,7 @@ function App() {
         </div>
       </nav>
 
-      {/* This is the left side menu for Mobile */}
+      {/* ======================================== This is the left side menu for MOBILE ============================================= */}
       <nav className={`flex items-start md:hidden `}>
         <div
           className={`flex flex-col w-[80%] sm:w-[60%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
@@ -83,8 +83,16 @@ function App() {
           </div>
 
           {/* This is for the bottom part of the aside section */}
-          <div className="absolute bottom-0 text-[0.85rem] border-t border-[#fff3] py-1 cursor-pointer font-medium w-[95%]">
-            <div className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2 whitespace-nowrap">
+          <div className="show_modal absolute bottom-0 text-[0.85rem] border-t border-[#fff3] py-1 cursor-pointer font-medium w-[95%]">
+            <div
+              className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2 whitespace-nowrap"
+              onClick={startModal}
+            >
+              {showModal ? (
+                <div className="overlay" onClick={handleNav}></div>
+              ) : (
+                <div className="show_modal"></div>
+              )}
               <span className="pr-4">
                 <BiUser />
               </span>
@@ -125,7 +133,7 @@ function App() {
           showNav ? "absolute" : "fixed"
         } top-0 bottom-0 right-0 md:w-[80%] w-[100%] text-[#D9D9E3]`}
       >
-        {/* TOP HAMBURGER MENU FOR MOBILE/TABLETS */}
+        {/* ======================================= TOP HAMBURGER MENU FOR MOBILE/TABLETS ================================ */}
         <div className="flex justify-between items-center px-4 py-[10px] border-[#838181] border-b-[0.2px] md:hidden">
           <button className="hover:font-extrabold" onClick={handleNav}>
             <RxHamburgerMenu className="text-[1.4rem] hover:text-[1.5rem]" />
@@ -138,9 +146,9 @@ function App() {
           ChatGPT
         </h1>
 
-        {/* EXAMPLES, CAPABILITIES AND LIMITATIONS */}
+        {/* **************************** EXAMPLES, CAPABILITIES AND LIMITATIONS ***************************************** */}
         <div className="flex md:flex-row flex-col items-center w-full md:gap-4 md:items-start md:w-[75%] md:mx-auto md:pb-[10rem] bg-[#343541]">
-          {/* EXAMPLES */}
+          {/* =================================== EXAMPLES ================================================================ */}
           <div className="flex flex-col items-center px-5 md:px-0 gap-4 md:w-[30%] w-[98%]">
             <div className="flex gap-4 md:flex-col flex-row">
               <div className="mx-auto">
@@ -162,7 +170,7 @@ function App() {
             </h5>
           </div>
 
-          {/* CAPABILITIES */}
+          {/* =================================== CAPABILITIES ============================================================= */}
           <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[98%]">
             <div className="flex gap-4 md:flex-col flex-row">
               <div className="mx-auto">
@@ -181,7 +189,7 @@ function App() {
             </h5>
           </div>
 
-          {/* LIMITATIONS SECTION */}
+          {/* ================================= LIMITATIONS SECTION ========================================================== */}
           <div className="flex flex-col items-center pt-8 md:pt-0 px-5 md:px-0 gap-4 md:w-[30%] w-[98%] mb-[12rem] md:mb-0">
             <div className="flex gap-4 md:flex-col flex-row">
               <div className="mx-auto">
@@ -200,6 +208,8 @@ function App() {
             </h5>
           </div>
         </div>
+
+        {/* =================================== SEND MESSAGE INPUT BOX AND FOOTER ============================================ */}
         <div
           className="flex flex-col items-center w-[97%] md:w-[75%] md:ml-[-4rem] lg:ml-8 fixed bottom-0 left-2 md:left-[15rem] bg-[#343541] border-t border-[#7f8196] pt-2 md:border-none md:pt-0"
           title="footer"
