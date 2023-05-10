@@ -23,13 +23,17 @@ import ModalUpgrade from "./Components/ModalUpgrade";
 function App() {
   const [showNav, setShowNav] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  // const [showScroll, setShowScroll] = useState(true);
+  const [showPopUp, setShowPopUp] = useState(false);
   const handleNav = () => {
     setShowNav(!showNav);
   };
 
   const startModal = () => {
     setShowModal(!showModal);
+  };
+
+  const handlePopUp = () => {
+    setShowPopUp(!showPopUp);
   };
 
   return (
@@ -70,11 +74,12 @@ function App() {
       </nav>
 
       {/* ======================================== This is the left side menu for MOBILE ============================================= */}
-      <nav className={`flex items-start md:hidden `}>
+      <nav className={`flex items-start md:hidden`}>
         <div
           className={`flex flex-col w-[80%] sm:w-[60%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
             showNav ? "translate-x-[-100%]" : "translate-x-[0%]"
           }`}
+          onClick={handlePopUp}
         >
           {/* For the New Chat Button/Box */}
           <div className="p-[8px] border border-solid border-[#fff3] rounded-[5px] text-start text-[0.8rem] flex items-center hover:bg-[rgba(255,255,255,0.1)] transition-all ease-linear duration-200 cursor-pointer">
@@ -83,9 +88,16 @@ function App() {
           </div>
 
           {/* This is for the bottom part of the aside section */}
-          <div className="show_modal absolute bottom-0 text-[0.85rem] border-t border-[#fff3] py-1 cursor-pointer font-medium w-[95%]">
+          <div
+            className={`show_modal absolute bottom-0 text-[0.85rem] ${
+              showPopUp ? "border-t-0" : "border-t"
+            } border-[#fff3] py-1 cursor-pointer font-medium w-[95%]`}
+          >
+            {/* ---------- Upgrade to Plus ------------- */}
             <div
-              className="flex items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2 whitespace-nowrap"
+              className={`${
+                showPopUp ? "hidden" : "flex"
+              } items-center hover:bg-[#343541] transition-all ease-linear duration-200 py-3 rounded-[7px] px-2 whitespace-nowrap`}
               onClick={startModal}
             >
               {showModal ? (
@@ -101,7 +113,63 @@ function App() {
                 NEW
               </span>
             </div>
-            <div className="md:w-[240px] w-full flex items-center gap-2 hover:bg-[#343541] transition-all ease-linear duration-200 py-4 mb-1 rounded-[7px] px-2">
+
+            {/* =============== EMAIL AND POP UP OPTIONS =================== */}
+            {/* dropdown menu */}
+            <div
+              className={`bg-pureBlack mr-1 mb-1 rounded-md ${
+                showPopUp ? "block" : "hidden"
+              }`}
+            >
+              <ul className="py-2">
+                {/* --- Help & FAQ --- */}
+                <li className="flex gap-3 py-4 pl-4 hover:bg-[#343541] mb-2">
+                  <span>
+                    <BsBoxArrowUpRight />
+                  </span>
+                  <a
+                    href="https://help.openai.com/en/collections/3742473-chatgpt"
+                    className="font-normal"
+                  >
+                    Help & FAQ
+                  </a>
+                </li>
+                <li className="border-y mb-2 border-[#fff3]">
+                  {/* --- Clear conversations --- */}
+                  <div>
+                    {/* TODO: Show clear conversations if there are lists of inputs */}
+                    <div className=" gap-3 py-4 pl-4 hover:bg-[#343541] my-2 font-normal hidden">
+                      <span>
+                        <BiTrash />
+                      </span>
+                      Clear conversations
+                    </div>
+
+                    {/* --- Settings --- */}
+                    {/* TODO: Work on setting up the modal */}
+                    <div className="flex gap-3 py-4 pl-4 hover:bg-[#343541] my-2 font-normal">
+                      <span>
+                        <FiSettings />
+                      </span>
+                      <button>Settings</button>
+                    </div>
+                  </div>
+                </li>
+
+                {/* --- Log out --- */}
+                <li className="flex gap-3 py-4 pl-4 hover:bg-[#343541] font-normal">
+                  {/* TODO: Will lead back to home page for signin and signup */}
+                  <span>
+                    <FiLogOut />
+                  </span>
+                  <a href="/">Log out</a>
+                </li>
+              </ul>
+            </div>
+            <div
+              className="md:w-[240px] w-full flex items-center gap-2 hover:bg-[#343541] transition-all ease-linear duration-200 py-4 mb-1 rounded-[7px] px-2"
+              onClick={handlePopUp}
+            >
               <span className="text-[8px] bg-[#3b82f680] p-1">PE</span>
               <h4 className="whitespace-nowrap text-ellipsis overflow-hidden ml-2">
                 perpetualmeninwa@gmail.com
@@ -112,6 +180,8 @@ function App() {
             </div>
           </div>
         </div>
+
+        {/* =================== HANDLE LEFT NAV ELEMENTS FOR MOBILE(START) ===================== */}
         <button
           className={`close md:hidden ${
             showNav ? "hidden" : "fixed top-2 border-2"
@@ -125,6 +195,7 @@ function App() {
         ) : (
           <div className="overlay" onClick={handleNav}></div>
         )}
+        {/* =================== HANDLE LEFT NAV ELEMENTS FOR MOBILE(START) ===================== */}
       </nav>
 
       {/* This is for the right side menu where the response is displayed */}
