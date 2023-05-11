@@ -79,7 +79,7 @@ function App() {
           className={`flex flex-col w-[80%] sm:w-[60%] top-0 bottom-0 left-0 bg-[#202123] p-[10px] z-20 fixed md:hidden transition ${
             showNav ? "translate-x-[-100%]" : "translate-x-[0%]"
           }`}
-          onClick={handlePopUp}
+          // onClick={handlePopUp}
         >
           {/* For the New Chat Button/Box */}
           <div className="p-[8px] border border-solid border-[#fff3] rounded-[5px] text-start text-[0.8rem] flex items-center hover:bg-[rgba(255,255,255,0.1)] transition-all ease-linear duration-200 cursor-pointer">
@@ -195,8 +195,8 @@ function App() {
         ) : (
           <div className="overlay" onClick={handleNav}></div>
         )}
-        {/* =================== HANDLE LEFT NAV ELEMENTS FOR MOBILE(START) ===================== */}
       </nav>
+      {/* =================== HANDLE LEFT NAV ELEMENTS FOR MOBILE(END) ===================== */}
 
       {/* This is for the right side menu where the response is displayed */}
       <section

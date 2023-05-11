@@ -6,7 +6,7 @@ const ModalUpgrade = ({ open, onClose }) => {
   if (!open) return null;
   return (
     <div>
-      <div className="modal max-w-[60%] sm:w-[90%] md:max-w-[60%] lg:max-w-[45%] bg-black text-white">
+      <div className="modal min-w-[60%] sm:w-[90%] md:max-w-[60%] lg:max-w-[45%] bg-black text-white">
         <div className="flex justify-between border-b border-[#4d4d4e] p-[0.8rem]">
           <h3 className="text-[0.975rem] font-bold">Your plan</h3>
           <button className="text-[1.4rem] text-[#D9D9E3]" onClick={onClose}>
