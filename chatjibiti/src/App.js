@@ -19,17 +19,23 @@ import { FiLogOut, FiSettings } from "react-icons/fi";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { useState } from "react";
 import ModalUpgrade from "./Components/ModalUpgrade";
+import ModalSettings from "./Components/ModalSettings";
 
 function App() {
   const [showNav, setShowNav] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [settingsModal, setSettingsModal] = useState(false);
   const handleNav = () => {
     setShowNav(!showNav);
   };
 
   const startModal = () => {
     setShowModal(!showModal);
+  };
+
+  const setModalSettings = () => {
+    setSettingsModal(!settingsModal);
   };
 
   const handlePopUp = () => {
@@ -119,7 +125,7 @@ function App() {
             <div
               className={`bg-pureBlack mr-1 mb-1 rounded-md ${
                 showPopUp ? "block" : "hidden"
-              }`}
+              } ${settingsModal ? "hidden" : "block"}`}
             >
               <ul className="py-2">
                 {/* --- Help & FAQ --- */}
@@ -147,7 +153,10 @@ function App() {
 
                     {/* --- Settings --- */}
                     {/* TODO: Work on setting up the modal */}
-                    <div className="flex gap-3 py-4 pl-4 hover:bg-[#343541] my-2 font-normal">
+                    <div
+                      className="flex gap-3 py-4 pl-4 hover:bg-[#343541] my-2 font-normal"
+                      onClick={setModalSettings}
+                    >
                       <span>
                         <FiSettings />
                       </span>
@@ -185,7 +194,9 @@ function App() {
         <button
           className={`close md:hidden ${
             showNav ? "hidden" : "fixed top-2 border-2"
-          } p-2 left-[22rem] sm:left-[19rem] transition duration-300 z-10 text-xl}`}
+          } p-2 left-[22rem] sm:left-[19rem] transition duration-300 z-10 text-xl ${
+            showModal ? "hidden" : "fixed top-2 border-2"
+          }`}
           onClick={handleNav}
         >
           <AiOutlineClose className="text-[1.2rem]" />
@@ -196,7 +207,7 @@ function App() {
           <div className="overlay" onClick={handleNav}></div>
         )}
       </nav>
-      {/* =================== HANDLE LEFT NAV ELEMENTS FOR MOBILE(END) ===================== */}
+      {/* =================== (END)HANDLE LEFT NAV ELEMENTS FOR MOBILE(END) ===================== */}
 
       {/* This is for the right side menu where the response is displayed */}
       <section
@@ -306,6 +317,7 @@ function App() {
         </div>
       </section>
 
+      {/* Button handling the scroller */}
       <button className="text-white fixed border-[0.1px] border-[#7f8196] rounded-full p-1 right-5 bottom-[10rem] bg-[#50515c]">
         <Link
           activeClass="active"
@@ -320,6 +332,7 @@ function App() {
         </Link>
       </button>
       <ModalUpgrade open={showModal} onClose={startModal} />
+      <ModalSettings show={settingsModal} onClear={setModalSettings} />
     </div>
   );
 }
