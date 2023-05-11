@@ -7,6 +7,7 @@ import {
   BsLightningCharge,
   BsExclamationTriangle,
   BsBoxArrowUpRight,
+  BsChatLeft,
 } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
